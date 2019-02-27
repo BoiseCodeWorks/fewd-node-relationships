@@ -12,14 +12,12 @@ server.use(bp.urlencoded({
 //above is always the same, usually
 
 let schoolRoutes = require('./server-assets/routes/schools')
-server.use('/api/schools', schoolRoutes)
 let principalRoutes = require('./server-assets/routes/principals')
+let studentRoutes = require('./server-assets/routes/students')
+
+server.use('/api/schools', schoolRoutes)
 server.use('/api/principals', principalRoutes)
-
-
-
-
-
+server.use('/api/students', studentRoutes)
 
 
 
