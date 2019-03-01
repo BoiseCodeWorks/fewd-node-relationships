@@ -22,6 +22,17 @@ router.post('/', (req, res, next) => {
   .catch(e => res.status(400).send({error: e}))
 })
 
+//this route very simply adds a grade to the student's grades array. modify the logic to fit your needs
+router.put('/:id', (req, res, next) => {
+  Students.findById(req.params.id)
+    .then(student => {
+      student.grades.push(req.body)
+      return student.save()
+    })
+    .then(()=> res.send("Student Updated"))
+    .catch(next)
+})
+
 //this method keeps field values and builds upon them safely
 router.put('/:id/classrooms', (req, res, next) => {
   Students.findById(req.params.id)
